@@ -4,7 +4,7 @@ using FactoryMethod.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
 var services = new ServiceCollection();
-services.AddMessageProcessorFactoryWithDI();
+services.AddMessageProcessorFactory();
 var serviceProvider = services.BuildServiceProvider();
 
 var messageProcessorFactory = serviceProvider.GetRequiredService<IMessageProcessorFactory>();
