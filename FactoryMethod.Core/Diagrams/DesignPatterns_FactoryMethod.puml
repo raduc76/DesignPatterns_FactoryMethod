@@ -1,6 +1,5 @@
 
 @startuml DesignPatterns_FactoryMethod
-skinparam classAttributeIconSize 0
 
 interface IMessageProcessor {
     +Process(messageBody: string): void
@@ -42,5 +41,6 @@ MessageProcessorV1 ..|> IMessageProcessor
 MessageProcessorV2 ..|> IMessageProcessor
 MessageProcessorFactory ..|> IMessageProcessorFactory
 MessageProcessorFactoryDI ..|> IMessageProcessorFactory
+IMessageProcessorFactory --> IMessageProcessor
 
 @enduml
