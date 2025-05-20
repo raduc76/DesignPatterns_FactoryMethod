@@ -1,0 +1,46 @@
+
+@startuml DesignPatterns_FactoryMethod
+skinparam classAttributeIconSize 0
+
+interface IMessageProcessor {
+    +Process(messageBody: string): void
+}
+
+interface IMessageProcessorFactory {
+    +CreateMessageProcessor(messageType: string): IMessageProcessor
+}
+
+abstract class MessageProcessor {
+    +Process(messageBody: string): void
+    #PersistModel(payment: Payment): void
+    #MapMessageToModel(messageBody: string): Payment
+    #AddDetailsToModel(messageBody: string, payment: Payment): void
+}
+
+class MessageProcessorV1 {
+    +AddDetailsToModel(messageBody: string, payment: Payment): void
+    +MapMessageToModel(messageBody: string): Payment
+}
+
+class MessageProcessorV2 {
+    +AddDetailsToModel(messageBody: string, payment: Payment): void
+    +MapMessageToModel(messageBody: string): Payment
+}
+
+class MessageProcessorFactory {
+    +CreateMessageProcessor(messageType: string): IMessageProcessor
+}
+
+class MessageProcessorFactoryDI {
+    +CreateMessageProcessor(messageType: string): IMessageProcessor
+}
+
+MessageProcessor ..|> IMessageProcessor
+MessageProcessorV1 --|> MessageProcessor
+MessageProcessorV2 --|> MessageProcessor
+MessageProcessorV1 ..|> IMessageProcessor
+MessageProcessorV2 ..|> IMessageProcessor
+MessageProcessorFactory ..|> IMessageProcessorFactory
+MessageProcessorFactoryDI ..|> IMessageProcessorFactory
+
+@enduml
