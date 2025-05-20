@@ -1,5 +1,6 @@
 
 @startuml DesignPatterns_FactoryMethod
+!theme aws-orange
 
 interface IMessageProcessor {
     +Process(messageBody: string): void
