@@ -24,7 +24,7 @@ namespace FactoryMethod.Core.Factories
             result = messageType switch
             {
                 Constants.V1_MESSAGE_TYPE => (IMessageProcessor)serviceProvider.GetService(typeof(MessageProcessorV1))!,
-                Constants.V2_MESSAGE_TYPE => (IMessageProcessor)serviceProvider.GetService(typeof(MessageProcessorV1))!,
+                Constants.V2_MESSAGE_TYPE => (IMessageProcessor)serviceProvider.GetService(typeof(MessageProcessorV2))!,
                 _ => throw new NotImplementedException()
             };
 
